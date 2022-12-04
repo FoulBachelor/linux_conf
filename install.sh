@@ -39,7 +39,6 @@ mkdir -p $HOME/.stubbe/config;
 touch -a $HOME/.profile;
 case $pkgmn in
   apt)
-    exec $update_command
     echo "Installing Dependencies"
     exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxft-dev libx11-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep neovim sshfs 
     echo "Installing JetBrainsMono Nerd Font"
