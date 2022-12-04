@@ -1,2 +1,12 @@
-# linux_conf
-Linux Dotfiles and XDG Struct
+* linux_conf
+** Linux Dotfiles and XDG Struct
+
+*** This is a small script for all linux platforms and MacOs.
+
+This script is install.sh. In order to use the config clone this repo.
+
+CD into the project and run sudo chmod +x install.sh and ./install.sh
+
+This will install my config for vim, zsh, terminal emulator and some other goodies.
+
+This goes well with a separate i3 config, but is not necessary.
