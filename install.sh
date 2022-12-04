@@ -6,9 +6,9 @@ echo -n "(apt, pacman, dnf):"
 read -r package_manager
 case $package_manager in
   apt|apt-get)
-    install_command="sudo apt install"
-    update_command="sudo apt update"
-    upgrade_command="sudo apt upgrade"
+    install_command="sudo apt -y install"
+    update_command="sudo apt -y update"
+    upgrade_command="sudo apt -y upgrade"
     pkgmn="apt"
     ;;
   pacman|yay|yaourt)
@@ -40,13 +40,12 @@ touch -a $HOME/.profile;
 case $pkgmn in
   apt)
     exec $update_command
-    exec $upgrade_command
     echo "Installing Dependencies"
-    exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep neovim sshfs 
+    exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxft-dev libx11-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep neovim sshfs 
     echo "Installing JetBrainsMono Nerd Font"
-		curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
+    curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
     mkdir -p $HOME/.fonts
-		unzip JetBrainsMono.zip $HOME/.fonts
+    unzip JetBrainsMono.zip $HOME/.fonts
     fc-cache -f -v
     echo "Install Suckless Terminal"
     git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
@@ -71,18 +70,17 @@ case $pkgmn in
     echo "Installing NvChad"
     rm -rf $HOME/.local/share/nvim
     git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    exec nvim
     ;;
   pacman)
     exec $update_command
     exec $upgrade_command
-		echo "Installing Dependencies"
+    echo "Installing Dependencies"
     exec $install_command --overwrite \* python-cairo
     exec $install_command cmake freetype2 fontconfig pkg-config make python libxcb libxkbcommon zip tar git-all tmux zsh ripgrep neovim sshfs
     echo "Installing JetBrainsMono Nerd Font"
     curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
     mkdir -p $HOME/.fonts
-		unzip JetBrainsMono.zip $HOME/.fonts
+    unzip JetBrainsMono.zip $HOME/.fonts
     fc-cache -f -v
     echo "Install Suckless Terminal"
     git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
@@ -107,17 +105,16 @@ case $pkgmn in
     echo "Installing NvChad"
     rm -rf $HOME/.local/share/nvim
     git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    exec nvim
     ;;
   dnf)
     exec $update_command
     exec $upgrade_command
-		echo "Installing Dependencies"
+    echo "Installing Dependencies"
     exec $install_command cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ zip tar git-all tmux zsh ripgrep neovim sshfs
     echo "Installing JetBrainsMono Nerd Font"
     curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
     mkdir -p $HOME/.fonts
-		unzip JetBrainsMono.zip $HOME/.fonts
+    unzip JetBrainsMono.zip $HOME/.fonts
     fc-cache -f -v
     echo "Install Suckless Terminal"
     git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
@@ -142,7 +139,6 @@ case $pkgmn in
     echo "Installing NvChad"
     rm -rf $HOME/.local/share/nvim
     git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    exec nvim
     ;;
   brew)
     which -s brew
@@ -151,12 +147,12 @@ case $pkgmn in
     fi
     exec $update_command
     exec $upgrade_command
-		echo "Installing Dependencies"
+    echo "Installing Dependencies"
     exec $install_command tmux zsh neovim ripgrep git-archive-all
-   	echo "Installing JetBrainsMono Nerd Font"
+    echo "Installing JetBrainsMono Nerd Font"
     curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
     mkdir -p $HOME/.fonts
-		unzip JetBrainsMono.zip $HOME/.fonts
+    unzip JetBrainsMono.zip $HOME/.fonts
     fc-cache -f -v
     echo "Install Suckless Terminal"
     git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
@@ -181,7 +177,6 @@ case $pkgmn in
     echo "Installing NvChad"
     rm -rf $HOME/.local/share/nvim
     git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    exec nvim
     ;;
 esac
 
