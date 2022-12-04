@@ -1,0 +1,33 @@
+# Personal Aliases
+command -v nvim >/dev/null 2>&1 && {
+  alias vi="nvim"
+  alias vim="nvim"
+}
+command -v nala >/dev/null 2>&1 && {
+  alias npt="sudo nala"
+}
+# Personal Aliases
+
+# Compat Aliases
+alias sysgame="sudo sysctl -w abi.vsyscall32=0"
+alias sysnorm="sudo sysctl -w abi.vsyscall32=1"
+alias legacy_ssl_node="export NODE_OPTIONS=--openssl-legacy-provider"
+# Compat Aliases
+
+# Work Alises
+alias start_clerk_vpn="openvpn3 session-start --config ~/.ssh/client.ovpn"
+alias stop_clerk_vpn="openvpn3 session-manage --config ~/.ssh/client.ovpn --disconnect"
+alias ssh_stubbe_dev="ssh root@95.179.226.197 -i ~/.ssh/id_rsa"
+alias ssh_clerk_dev="ssh abs@10.0.1.109 -i ~/.ssh/clerk_dev"
+alias mnt_stubbe_dev="mkdir -p ~/Server/stubbe_dev && sshfs -o IdentityFile=~/.ssh/id_rsa root@95.179.226.197:/var/www ~/Server/stubbe_dev"
+alias mnt_clerk_dev="mkdir -p ~/Server/clerk_dev && sshfs -o IdentityFile=~/.ssh/clerk_dev abs@10.0.1.109:~/git ~/Server/clerk_dev"
+# Work Aliases
+
+# Work Functions
+function php_lint {
+  ~/.config/composer/vendor/bin/phpcs --standard="$1" "$2"
+}
+function php_fix {
+  ~/.config/composer/vendor/bin/phpcbf --standard="$1" "$2"
+}
+# Work Functions
