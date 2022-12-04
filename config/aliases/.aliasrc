@@ -13,8 +13,19 @@ command -v nala >/dev/null 2>&1 && {
       if [ "$1" = "s" ]; then
         sudo nala search "${@:2}"
       fi
+      if [ "$1" = "r" ]; then
+        sudo nala remove "${@:2}"
+      fi
   }
 }
+function tmux_init() {
+if [ "$TERM_PROGRAM" = tmux ]; then
+  tmux new-session -A;
+else
+  tmux kill-session;
+fi
+}
+
 command -v nvim >/dev/null 2>&1 && {
   alias vi="nvim"
   alias vim="nvim"

@@ -85,6 +85,7 @@ source $ZSH_STUBBE_DIRECTORY/zsh-autopair/autopair.zsh
 bindkey -v
 bindkey -s '§' '$'
 bindkey -s "^L" 'ls -a^M'
+bindkey -s "^T" 'tmux_init^M'
 # USER Keybinds for Terminal
 
 # USER Alias && Function imports
