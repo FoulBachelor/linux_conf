@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Do you already have dependecies installed?"
+echo "Do you want to check and install dependencies?"
 read -p "(y)es or (n)o: " yn
 case $yn in
     [Yy]* )
@@ -35,7 +35,6 @@ case $yn in
         echo "Continuing without checking dependencies"
     ;;
 esac
-echo "Removing Ghost Files, Spookieeeeee"
 rm -rf $HOME/.stubbe/builds/nvim
 rm -rf $HOME/.config/nvim
 rm -rf $HOME/.local/share/nvim
