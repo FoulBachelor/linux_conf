@@ -1,31 +1,40 @@
 #!/bin/bash
-echo "Checking system for updates"
-sudo pacman -Syyuu
-sleep 3
-echo "Installing Prerequisites"
-sudo pacman -Ryy neovim
-sudo pacman -Syy --overwrite \* python-cairo
-sudo pacman -Syy cmake
-sudo pacman -Syy freetype2
-sudo pacman -Syy fontconfig
-sudo pacman -Syy pkg-config
-sudo pacman -Syy make
-sudo pacman -Syy python
-sudo pacman -Syy libxcb
-sudo pacman -Syy libxkbcommon
-sudo pacman -Syy zip
-sudo pacman -Syy git
-sudo pacman -Syy curl
-sudo pacman -Syy wget
-sudo pacman -Syy tar
-sudo pacman -Syy tmux
-sudo pacman -Syy zsh
-sudo pacman -Syy ripgrep
-sudo pacman -Syy sshfs
-sleep 3
-echo "Checking updates post-install"
-sudo pacman -Syyuu
-sleep 3
+echo "Do you already have dependecies installed?"
+read -p "(y)es or (n)o: " yn
+case $yn in
+    [Yy]* )
+        echo "Checking system for updates"
+        sudo pacman -Syyuu
+        sleep 3
+        echo "Installing Prerequisites"
+        sudo pacman -Ryy neovim
+        sudo pacman -Syy --overwrite \* python-cairo
+        sudo pacman -Syy cmake
+        sudo pacman -Syy freetype2
+        sudo pacman -Syy fontconfig
+        sudo pacman -Syy pkg-config
+        sudo pacman -Syy make
+        sudo pacman -Syy python
+        sudo pacman -Syy libxcb
+        sudo pacman -Syy libxkbcommon
+        sudo pacman -Syy zip
+        sudo pacman -Syy git
+        sudo pacman -Syy curl
+        sudo pacman -Syy wget
+        sudo pacman -Syy tar
+        sudo pacman -Syy tmux
+        sudo pacman -Syy zsh
+        sudo pacman -Syy ripgrep
+        sudo pacman -Syy sshfs
+        sleep 3
+        echo "Checking updates post-install"
+        sudo pacman -Syyuu
+        sleep 3
+    ;;
+    [Nn]* )
+        echo "Continuing without checking dependencies"
+    ;;
+esac
 echo "Removing Ghost Files, Spookieeeeee"
 rm -rf $HOME/.stubbe/builds/nvim
 rm -rf $HOME/.config/nvim
