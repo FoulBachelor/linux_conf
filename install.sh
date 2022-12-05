@@ -7,19 +7,19 @@ echo "Which package manager do you use?"
 echo -n "(apt, pacman, dnf, brew):"
 read -r package_manager
 case $package_manager in
-    apt|apt-get)
+    apt|apt-get|a)
         echo "Will Install using APT"
         pkgmn="apt"
     ;;
-    pacman|yay|yaourt)
+    pacman|yay|yaourt|p)
         echo "Will Install using PACMAN"
         pkgmn="pacman"
     ;;
-    dnf|yum)
+    dnf|yum|d)
         echo "Will Install using DNF"
         pkgmn="dnf"
     ;;
-    brew|*)
+    brew|b)
         echo "Unknown Linux Distro"
         echo "Will use BREW"
         pkgmn="brew"
