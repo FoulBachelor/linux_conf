@@ -1,27 +1,27 @@
 #!/bin/bash
 echo "Checking system for updates"
-sudo apt update
+sudo pacman -Syyuu
 sleep 3
 echo "Installing Prerequisites"
-sudo pacman -Ry neovim
-sudo pacman -Sy --overwrite \* python-cairo
-sudo pacman -Sy cmake
-sudo pacman -Sy freetype2
-sudo pacman -Sy fontconfig
-sudo pacman -Sy pkg-config
-sudo pacman -Sy make
-sudo pacman -Sy python
-sudo pacman -Sy libxcb
-sudo pacman -Sy libxkbcommon
-sudo pacman -Sy zip
-sudo pacman -Sy git-all
-sudo pacman -Sy curl
-sudo pacman -Sy wget
-sudo pacman -Sy tar
-sudo pacman -Sy tmux
-sudo pacman -Sy zsh
-sudo pacman -Sy ripgrep
-sudo pacman -Sy sshfs
+sudo pacman -Ryy neovim
+sudo pacman -Syy --overwrite \* python-cairo
+sudo pacman -Syy cmake
+sudo pacman -Syy freetype2
+sudo pacman -Syy fontconfig
+sudo pacman -Syy pkg-config
+sudo pacman -Syy make
+sudo pacman -Syy python
+sudo pacman -Syy libxcb
+sudo pacman -Syy libxkbcommon
+sudo pacman -Syy zip
+sudo pacman -Syy git-all
+sudo pacman -Syy curl
+sudo pacman -Syy wget
+sudo pacman -Syy tar
+sudo pacman -Syy tmux
+sudo pacman -Syy zsh
+sudo pacman -Syy ripgrep
+sudo pacman -Syy sshfs
 sleep 3
 echo "Checking updates post-install"
 sudo pacman -Syyuu
