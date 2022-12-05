@@ -29,12 +29,15 @@ sudo apt upgrade -y
 sleep 3
 echo "Removing Ghost Files, Spookieeeeee"
 rm -rf $HOME/.stubbe/builds/nvim
-rm -rf /usr/bin/nvim
+rm -rf $HOME/.config/nvim
+rm -rf $HOME/.local/share/nvim
+rm -rf $HOME/.cache/nvim
 rm -rf $HOME/.stubbe/builds/st
 rm -rf $HOME/.zshrc
 rm -rf $HOME/.aliasrc
 rm -rf $HOME/.tmux.conf
 rm -rf $HOME/.tmux/plugins/tpm
+rm -rf /usr/bin/nvim
 echo "Making Directories and .Profile"
 mkdir -p $HOME/.stubbe/builds
 mkdir -p $HOME/.stubbe/builds/nvim
