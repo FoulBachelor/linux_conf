@@ -7,7 +7,7 @@ This script is install.sh. In order to use the config clone this repo.
 
 #+NAME: Install Instructions
 #+BEGIN_SRC bash
-  git clone https://github.com/FoulBachelor/linux_conf && ./install.sh
+  git clone https://github.com/FoulBachelor/linux_conf && ./linux_conf/install.sh
 #+END_SRC
 
 This will install my config for vim, zsh, terminal emulator and some other goodies.
