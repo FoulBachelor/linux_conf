@@ -55,8 +55,8 @@ VIM_MODE_NO_DEFAULT_BINDINGS=true
 # Z-STYLE Globals
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 1
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Z-STYLE Globals
 
 # USER Preferences
