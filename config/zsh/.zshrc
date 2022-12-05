@@ -113,10 +113,9 @@ source $ZSH_STUBBE_DIRECTORY/zsh-theme/powerlevel10k.zsh-theme
 # Auto Launch TMUX with each Terminal Process and Auto Kill with Closing Window
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux new-session -A -s $$
+  tmux list-sessions -F '#{session_attached} #{session_id}' | \
+  awk '/^0/{print $2}' | \
+  xargs -n 1 tmux kill-session -t
 fi
-function _trap_tmux_exit {
-  tmux kill-session -t $$; 
-}
-trap _trap_tmux_exit EXIT;
 # Auto Launch TMUX with each Terminal Process and Auto Kill with Closing Window
 
