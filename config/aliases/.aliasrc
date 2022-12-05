@@ -20,9 +20,9 @@ command -v nala >/dev/null 2>&1 && {
 }
 function tmux_init() {
 if [ "$TERM_PROGRAM" = tmux ]; then
-  tmux new-session -A;
+  tmux new-session -As MAIN;
 else
-  tmux kill-session;
+  tmux kill-session -t MAIN;
 fi
 }
 
