@@ -55,7 +55,7 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsM
 mv JetBrainsMono.zip $STUBBE_INSTALLER_DIR/font_tmp
 unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip
 cp -rf $STUBBE_INSTALLER_DIR/font_tmp/* $HOME/.fonts
-rm -f $STUBBE_INSTALLER_DIR/font_tmp
+rm -rf $STUBBE_INSTALLER_DIR/font_tmp
 fc-cache -f
 echo "Install ST Terminal"
 git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
