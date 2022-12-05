@@ -1,5 +1,6 @@
 #!/bin/sh
 SOURCEWD="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+export STUBBE_INSTALLER_DIR=$SOURCEWD
 echo "Welcome to the Stubbe Terminal Rice"
 echo "This script will modify your shell, terminal emulator, multiplexer and shell theme"
 echo "Which package manager do you use?"
@@ -34,62 +35,10 @@ case $package_manager in
     ;;
 esac
 echo "Running system update and installing dependencies!"
-mkdir -p $HOME/.stubbe/builds;
-mkdir -p $HOME/.stubbe/config;
-touch -a $HOME/.profile;
 case $pkgmn in
     apt)
-        echo "Due to apt being shit, it will quit this script after running update and intall"
-        echo "There for please answer if you are sure dependencies are installed."
-        echo "If yes, it will install my script, if not it will install dependencies. Please rerun the script after."
-        echo -n "Have you installed dependencies already? (y)es / (n)o:"
-        read -r install_dep
-        if [ $install_dep = 'n' || $install_dep = 'no' ]; then
-          echo "Installing Dependencies";
-          exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxft-dev libx11-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep sshfs  < "/dev/null";
-        fi
-        echo "Installing NeoVim Terminal IDE";
-        wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz;
-        tar xzvf ./nvim-*.tar.gz;
-        rm -rf $HOME/.stubbe/builds/nvim;
-        mkdir -p $HOME/.stubbe/builds/nvim;
-        cp -rf  $SOURCEWD/nvim-linux64/* $HOME/.stubbe/builds/nvim;
-        rm -rf /usr/bin/nvim;
-        sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim;
-        echo "Installing JetBrainsMono Nerd Font";
-        curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip;
-        mkdir -p $HOME/.fonts;
-        unzip JetBrainsMono.zip $HOME/.fonts;
-        fc-cache -f;
-        echo "Install Suckless Terminal";
-        rm -rf $HOME/.stubbe/builds/st;
-        git clone https://git.suckless.org/st $HOME/.stubbe/builds/st;
-        cd $HOME/.stubbe/builds/st;
-        cp $SOURCEWD/config/st/config.h $HOME/.stubbe/builds/st/config.h;
-        sudo make clean install;
-        cd $SOURCEWD;
-        echo "export TERMINAL=st" >> $HOME/.profile;
-        echo "Setting zsh as default shell";
-        chsh -s $(whereis zsh | cut -d' ' -f2);
-        cp $SOURCEWD/config/zsh/.zshrc $HOME/.stubbe/config/.zshrc;
-        rm -f $HOME/.zshrc;
-        ln -s $HOME/.stubbe/config/.zshrc $HOME/.zshrc;
-        echo "Installing Aliases and Personal Functions";
-        cp $SOURCEWD/config/aliases/.aliasrc $HOME/.stubbe/config/.aliasrc;
-        echo "Adding st_config and st_build to aliasrc";
-        echo "alias st_config='$EDITOR $HOME/.stubbe/builds/st/config.h'" >> $HOME/.stubbe/config/.aliasrc;
-        echo "alias st_build='cd $HOME/.stubbe/builds/st && sudo make clean install && cd $HOME && echo reopen terminal!'" >> $HOME/.stubbe/config/.aliasrc;
-        rm -f $HOME/.aliasrc;
-        ln -s $HOME/.stubbe/config/.aliasrc $HOME/.aliasrc;
-        echo "Installing TMUX Plugin Manager";
-        rm -rf $HOME/.tmux/plugins/tpm;
-        git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm;
-        cp $SOURCEWD/config/tmux/.tmux.conf $HOME/.stubbe/config/.tmux.conf;
-        rm -f $HOME/.tmux.conf;
-        ln -s $HOME/.stubbe/config/.tmux.conf $HOME/.tmux.conf;
-        echo "Installing NvChad";
-        rm -rf $HOME/.local/share/nvim $HOME/.config/nvim;
-        git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1 && nvim;
+        sudo chmod +x $SOURCEWD/sh/$pkgmn.sh
+        $SOURCEWD/sh/$pkgmn.sh
     ;;
     pacman)
         echo -n "Have you installed dependencies already? (y)es / (n)o:";
