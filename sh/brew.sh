@@ -4,31 +4,39 @@ which -s brew
 if [[ $? != 0 ]] ; then
   curl -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-echo "Checking system for updates"
-sudo brew update
-sleep 3
-echo "Installing Prerequisites"
-sudo brew install py3cairo 
-sudo brew install cmake
-sudo brew install freetype
-sudo brew install fontconfig
-sudo brew install pkg-config
-sudo brew install make
-sudo brew install libxcb
-sudo brew install libxkbcommon
-sudo brew install zip
-sudo brew install curl
-sudo brew install wget
-sudo brew install libtar
-sudo brew install tmux
-sudo brew install zsh
-sudo brew install ripgrep
-sudo brew install sshfs
-sleep 3
-echo "Checking updates post-install"
-sudo brew update
-sleep 3
-echo "Removing Ghost Files, Spookieeeeee"
+echo "Do you want to check and install dependencies?"
+read -p "(y)es or (n)o: " yn
+case $yn in
+  [Yy]* )
+    echo "Checking system for updates"
+    sudo brew update
+    sleep 3
+    echo "Installing Prerequisites"
+    sudo brew install py3cairo 
+    sudo brew install cmake
+    sudo brew install freetype
+    sudo brew install fontconfig
+    sudo brew install pkg-config
+    sudo brew install make
+    sudo brew install libxcb
+    sudo brew install libxkbcommon
+    sudo brew install zip
+    sudo brew install curl
+    sudo brew install wget
+    sudo brew install libtar
+    sudo brew install tmux
+    sudo brew install zsh
+    sudo brew install ripgrep
+    sudo brew install sshfs
+    sleep 3
+    echo "Checking updates post-install"
+    sudo dnf upgrade -sudo brew update
+    sleep 3
+    ;;
+  [Nn]* )
+    echo "Continuing without checking dependencies"
+    ;;
+esac
 rm -rf $HOME/.stubbe/builds/nvim
 rm -rf $HOME/.config/nvim
 rm -rf $HOME/.local/share/nvim

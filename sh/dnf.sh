@@ -1,29 +1,35 @@
 #!/bin/bash
-echo "Checking system for updates"
-sudo dnf check-update
-sleep 3
-echo "Installing Prerequisites"
-sudo dnf remove -y neovim
-sudo dnf install -y cmake
-sudo dnf install -y freetype-devel 
-sudo dnf install -y fontconfig-devel 
-sudo dnf install -y libxcb-devel 
-sudo dnf install -y libxkbcommon-devel 
-sudo dnf install -y g++ 
-sudo dnf install -y zip 
-sudo dnf install -y tar 
-sudo dnf install -y git-all 
-sudo dnf install -y tmux 
-sudo dnf install -y zsh 
-sudo dnf install -y ripgrep 
-sudo dnf install -y sshfs
-sleep 3
-echo "Checking updates post-install"
-sudo dnf check-update
-sleep 3
-sudo dnf upgrade -y
-sleep 3
-echo "Removing Ghost Files, Spookieeeeee"
+echo "Do you want to check and install dependencies?"
+read -p "(y)es or (n)o: " yn
+case $yn in
+  [Yy]* )
+    echo "Checking system for updates"
+    sudo dnf check-update
+    sleep 3
+    echo "Installing Prerequisites"
+    sudo dnf remove -y neovim
+    sudo dnf install -y cmake
+    sudo dnf install -y freetype-devel 
+    sudo dnf install -y fontconfig-devel 
+    sudo dnf install -y libxcb-devel 
+    sudo dnf install -y libxkbcommon-devel 
+    sudo dnf install -y g++ 
+    sudo dnf install -y zip 
+    sudo dnf install -y tar 
+    sudo dnf install -y git-all 
+    sudo dnf install -y tmux 
+    sudo dnf install -y zsh 
+    sudo dnf install -y ripgrep 
+    sudo dnf install -y sshfs
+    sleep 3
+    echo "Checking updates post-install"
+    sudo dnf upgrade -y
+    sleep 3
+    ;;
+  [Nn]* )
+    echo "Continuing without checking dependencies"
+    ;;
+esac
 rm -rf $HOME/.stubbe/builds/nvim
 rm -rf $HOME/.config/nvim
 rm -rf $HOME/.local/share/nvim

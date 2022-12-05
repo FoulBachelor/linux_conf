@@ -1,34 +1,41 @@
 #!/bin/bash
-echo "Checking system for updates"
-sudo apt update
-sleep 3
-echo "Installing Prerequisites"
-sudo apt remove -y neovim
-sudo apt install -y cmake
-sudo apt install -y pkg-config
-sudo apt install -y libfreetype6-dev
-sudo apt install -y libfontconfig1-dev
-sudo apt install -y libxft-dev
-sudo apt install -y libx11-dev
-sudo apt install -y libxcb-xfixes0-dev
-sudo apt install -y libxkbcommon-dev
-sudo apt install -y python3
-sudo apt install -y git-all
-sudo apt install -y curl
-sudo apt install -y wget
-sudo apt install -y zip
-sudo apt install -y tar
-sudo apt install -y tmux
-sudo apt install -y zsh
-sudo apt install -y ripgrep
-sudo apt install -y sshfs
-sleep 3
-echo "Checking updates post-install"
-sudo apt update
-sleep 3
-sudo apt upgrade -y
-sleep 3
-echo "Removing Ghost Files, Spookieeeeee"
+
+echo "Do you want to check and install dependencies?"
+read -p "(y)es or (n)o: " yn
+case $yn in
+  [Yy]* )
+    echo "Checking system for updates"
+    sudo apt update
+    sleep 3
+    echo "Installing Prerequisites"
+    sudo apt remove -y neovim
+    sudo apt install -y cmake
+    sudo apt install -y pkg-config
+    sudo apt install -y libfreetype6-dev
+    sudo apt install -y libfontconfig1-dev
+    sudo apt install -y libxft-dev
+    sudo apt install -y libx11-dev
+    sudo apt install -y libxcb-xfixes0-dev
+    sudo apt install -y libxkbcommon-dev
+    sudo apt install -y python3
+    sudo apt install -y git-all
+    sudo apt install -y curl
+    sudo apt install -y wget
+    sudo apt install -y zip
+    sudo apt install -y tar
+    sudo apt install -y tmux
+    sudo apt install -y zsh
+    sudo apt install -y ripgrep
+    sudo apt install -y sshfs
+    sleep 3
+    echo "Checking updates post-install"
+    sudo apt upgrade -y
+    sleep 3
+    ;;
+  [Nn]* )
+    echo "Continuing without checking dependencies"
+    ;;
+esac
 rm -rf $HOME/.stubbe/builds/nvim
 rm -rf $HOME/.config/nvim
 rm -rf $HOME/.local/share/nvim
