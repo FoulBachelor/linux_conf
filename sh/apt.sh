@@ -3,6 +3,7 @@ echo "Checking system for updates"
 sudo apt update
 sleep 3
 echo "Installing Prerequisites"
+sudo apt remove -y neovim
 sudo apt install -y cmake
 sudo apt install -y pkg-config
 sudo apt install -y libfreetype6-dev
@@ -51,8 +52,11 @@ tar xzvf ./nvim-*.tar.gz
 cp -rf  $STUBBE_INSTALLER_DIR/nvim-linux64/* $HOME/.stubbe/builds/nvim
 sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim
 echo "Installing JetBrainsMono Nerd Font"
-curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
-unzip JetBrainsMono.zip -d $HOME/.fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
+mv JetBrainsMono.zip $STUBBE_INSTALLER_DIR/font_tmp
+unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip
+cp -rf $STUBBE_INSTALLER_DIR/font_tmp/* $HOME/.fonts
+rm -f $STUBBE_INSTALLER_DIR/font_tmp
 fc-cache -f
 echo "Install ST Terminal"
 git clone https://git.suckless.org/st $HOME/.stubbe/builds/st
