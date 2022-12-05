@@ -46,9 +46,17 @@ case $pkgmn in
         read -r install_dep
         if [ $install_dep = 'n' || $install_dep = 'no' ]; then
           echo "Installing Dependencies";
-          exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxft-dev libx11-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep neovim sshfs  < "/dev/null";
+          exec $install_command cmake pkg-config libfreetype6-dev libfontconfig1-dev libxft-dev libx11-dev libxcb-xfixes0-dev libxkbcommon-dev python3 git-all curl zip tar git-all tmux zsh ripgrep sshfs  < "/dev/null";
         fi
-        echo "Installing JetBrainsMono Nerd Font"
+        echo "Installing NeoVim Terminal IDE";
+        wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz;
+        tar xzvf ./nvim-*.tar.gz;
+        rm -rf $HOME/.stubbe/builds/nvim;
+        mkdir -p $HOME/.stubbe/builds/nvim;
+        cp -rf  $SOURCEWD/nvim-linux64/* $HOME/.stubbe/builds/nvim;
+        rm -rf /usr/bin/nvim;
+        sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim;
+        echo "Installing JetBrainsMono Nerd Font";
         curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip;
         mkdir -p $HOME/.fonts;
         unzip JetBrainsMono.zip $HOME/.fonts;
@@ -89,8 +97,16 @@ case $pkgmn in
         if [ $install_dep = 'n' || $install_dep = 'no' ]; then
           echo "Installing Dependencies";
           exec $upgrade_command --overwrite \* python-cairo;
-          exec $install_command cmake freetype2 fontconfig pkg-config make python libxcb libxkbcommon zip tar git-all tmux zsh ripgrep neovim sshfs;
+          exec $install_command cmake freetype2 fontconfig pkg-config make python libxcb libxkbcommon zip tar git-all tmux zsh ripgrep sshfs;
         fi
+        echo "Installing NeoVim Terminal IDE";
+        wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz;
+        tar xzvf ./nvim-*.tar.gz;
+        rm -rf $HOME/.stubbe/builds/nvim;
+        mkdir -p $HOME/.stubbe/builds/nvim;
+        cp -rf  $SOURCEWD/nvim-linux64/* $HOME/.stubbe/builds/nvim;
+        rm -rf /usr/bin/nvim;
+        sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim;
         echo "Installing JetBrainsMono Nerd Font";
         curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip;
         mkdir -p $HOME/.fonts;
@@ -131,8 +147,16 @@ case $pkgmn in
         if [ $install_dep = 'n' || $install_dep = 'no' ]; then
           exec $update_command;
           echo "Installing Dependencies";
-          exec $install_command cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ zip tar git-all tmux zsh ripgrep neovim sshfs;
+          exec $install_command cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++ zip tar git-all tmux zsh ripgrep sshfs;
         fi
+        echo "Installing NeoVim Terminal IDE";
+        wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz;
+        tar xzvf ./nvim-*.tar.gz;
+        rm -rf $HOME/.stubbe/builds/nvim;
+        mkdir -p $HOME/.stubbe/builds/nvim;
+        cp -rf  $SOURCEWD/nvim-linux64/* $HOME/.stubbe/builds/nvim;
+        rm -rf /usr/bin/nvim;
+        sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim;
         echo "Installing JetBrainsMono Nerd Font";
         curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip;
         mkdir -p $HOME/.fonts;
@@ -178,8 +202,17 @@ case $pkgmn in
           exec $update_command;
           exec $upgrade_command;
           echo "Installing Dependencies";
-          exec $install_command tmux zsh neovim ripgrep git-archive-all;
+          exec $install_command tmux zsh ripgrep git-archive-all;
         fi
+        echo "Installing NeoVim Terminal IDE";
+        wget https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
+		xattr -c ./nvim-macos.tar.gz
+        tar xzvf ./nvim-*.tar.gz;
+        rm -rf $HOME/.stubbe/builds/nvim;
+        mkdir -p $HOME/.stubbe/builds/nvim;
+        cp -rf  $SOURCEWD/nvim-macos/* $HOME/.stubbe/builds/nvim;
+        rm -rf /usr/bin/nvim;
+        sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim;
         echo "Installing JetBrainsMono Nerd Font";
         curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip;
         mkdir -p $HOME/.fonts;
@@ -216,4 +249,7 @@ case $pkgmn in
         git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim;
     ;;
 esac
-
+echo "Cleaning up Downloads";
+cd $SOURCEWD;
+rm -rf ./*.zip ./*.tar.gz;
+echo "Done";
