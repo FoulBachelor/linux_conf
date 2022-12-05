@@ -14,7 +14,7 @@ sudo pacman -Syy python
 sudo pacman -Syy libxcb
 sudo pacman -Syy libxkbcommon
 sudo pacman -Syy zip
-sudo pacman -Syy git-all
+sudo pacman -Syy git
 sudo pacman -Syy curl
 sudo pacman -Syy wget
 sudo pacman -Syy tar
