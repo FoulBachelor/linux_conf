@@ -45,5 +45,5 @@ case $pkgmn in
     ;;
 esac
 echo "Cleaning up Downloads";
-rm -rf $SOURCEWD;
+rm -rf $SOURCEWD && cd ..;
 echo "Done";
