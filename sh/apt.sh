@@ -39,6 +39,7 @@ rm -rf $HOME/.aliasrc
 rm -rf $HOME/.tmux.conf
 rm -rf $HOME/.tmux/plugins/tpm
 rm -rf /usr/bin/nvim
+unlink /usr/bin/nvim
 echo "Making Directories and .Profile"
 mkdir -p $HOME/.stubbe/builds
 mkdir -p $HOME/.stubbe/builds/nvim
