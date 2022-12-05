@@ -55,6 +55,8 @@ VIM_MODE_NO_DEFAULT_BINDINGS=true
 # Z-STYLE Globals
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 1
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Z-STYLE Globals
 
 # USER Preferences
@@ -89,6 +91,11 @@ bindkey -s "^T" 'tmux_init^M'
 # USER Keybinds for Terminal
 
 # USER Alias && Function imports
+if [ -f "$FILE" ]; then
+    source $HOME/.aliasrc;
+else 
+    touch -a $HOME/.aliasrc;
+fi
 source $HOME/.aliasrc
 # USER Alias && Function imports
 
