@@ -87,7 +87,7 @@ source $ZSH_STUBBE_DIRECTORY/zsh-autopair/autopair.zsh
 bindkey -v
 bindkey -s '§' '$'
 bindkey -s "^L" 'ls -a^M'
-bindkey -s "^T" 'tmux_init^M'
+# bindkey -s "^T" 'tmux_init^M' ## Ctrl+T to toggle the TMUX SERVER
 # USER Keybinds for Terminal
 
 # USER Alias && Function imports
@@ -109,3 +109,10 @@ source $ZSH_STUBBE_DIRECTORY/zsh-theme/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
+# Auto Launch TMUX with each Terminal Process
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux new-session -A -s $$
+fi
+# Auto Launch TMUX with each Terminal Process
+
