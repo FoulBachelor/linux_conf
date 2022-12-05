@@ -9,10 +9,7 @@ CD into the project and run sudo chmod +x install.sh and ./install.sh
 
 #+NAME: Install Instructions
 #+BEGIN_SRC bash
-  git clone https://github.com/FoulBachelor/linux_conf
-  cd linux_conf
-  sudo chmod +x install.sh
-  ./install.sh
+  git clone https://github.com/FoulBachelor/linux_conf && ./install.sh
 #+END_SRC
 
 This will install my config for vim, zsh, terminal emulator and some other goodies.
