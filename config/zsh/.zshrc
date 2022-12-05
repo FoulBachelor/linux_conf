@@ -92,9 +92,9 @@ bindkey -s "^L" 'ls -a^M'
 
 # USER Alias && Function imports
 if [ -f "$FILE" ]; then
-    source $HOME/.aliasrc;
+  source $HOME/.aliasrc;
 else 
-    touch -a $HOME/.aliasrc;
+  touch -a $HOME/.aliasrc;
 fi
 source $HOME/.aliasrc
 # USER Alias && Function imports
@@ -110,9 +110,13 @@ source $ZSH_STUBBE_DIRECTORY/zsh-theme/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-# Auto Launch TMUX with each Terminal Process
+# Auto Launch TMUX with each Terminal Process and Auto Kill with Closing Window
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux new-session -A -s $$
 fi
-# Auto Launch TMUX with each Terminal Process
+function _trap_tmux_exit {
+  tmux kill-session -t $$; 
+}
+trap _trap_tmux_exit EXIT;
+# Auto Launch TMUX with each Terminal Process and Auto Kill with Closing Window
 
