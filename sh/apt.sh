@@ -45,6 +45,7 @@ mkdir -p $HOME/.stubbe/builds/nvim
 mkdir -p $HOME/.stubbe/builds/st
 mkdir -p $HOME/.stubbe/config
 mkdir -p $HOME/.fonts
+mkdir -p $STUBBE_INSTALLER_DIR/font_tmp
 touch -a $HOME/.profile
 echo "Downloading NeoVim, a newer version of Vim, a newer version of Vi, an older version of 5"
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
