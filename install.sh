@@ -25,7 +25,6 @@ case $package_manager in
         pkgmn="brew"
     ;;
 esac
-echo "Running system update and installing dependencies!"
 case $pkgmn in
     apt)
         sudo chmod +x $SOURCEWD/sh/$pkgmn.sh
