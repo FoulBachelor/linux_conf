@@ -5,8 +5,6 @@
 
 This script is install.sh. In order to use the config clone this repo.
 
-CD into the project and run sudo chmod +x install.sh and ./install.sh
-
 #+NAME: Install Instructions
 #+BEGIN_SRC bash
   git clone https://github.com/FoulBachelor/linux_conf && ./install.sh
