@@ -45,6 +45,5 @@ case $pkgmn in
     ;;
 esac
 echo "Cleaning up Downloads";
-cd $SOURCEWD;
-rm -rf ./*.zip ./*.tar.gz nvim-*
+rm -rf $SOURCEWD;
 echo "Done";
