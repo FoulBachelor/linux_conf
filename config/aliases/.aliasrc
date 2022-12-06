@@ -18,7 +18,10 @@ command -v nala >/dev/null 2>&1 && {
       fi
   }
 }
-function tmux_init() {
+function fa {
+  grep -H -r "$1" * | less
+}
+function tmux_init {
 if [ "$TERM_PROGRAM" = tmux ]; then
   tmux kill-session -t MAIN;
 else

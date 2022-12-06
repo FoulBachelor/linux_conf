@@ -104,5 +104,11 @@ echo "Creating Symlinks"
 ln -s $HOME/.stubbe/config/.zshrc $HOME/.zshrc
 ln -s $HOME/.stubbe/config/.aliasrc $HOME/.aliasrc
 ln -s $HOME/.stubbe/config/.tmux.conf $HOME/.tmux.conf
+echo "Creating stubbe config binary"
+cp -f $STUBBE_INSTALLER_DIR/stubbe.sh $HOME/.stubbe/stubbe
+sudo chmod +x $HOME/.stubbe/stubbe
+sudo ln -s $HOME/.stubbe/stubbe /usr/bin/stubbe
+echo "Stubbe binary added to PATH, write 'stubbe' in terminal to use it"
+sleep 3
 echo "Installing NvChad config to NeoVim"
 git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1 && nvim
