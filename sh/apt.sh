@@ -80,6 +80,7 @@ if hash gsettings 2>/dev/null; then
   gsettings set org.gnome.desktop.default-applications.terminal exec st
 fi
 if hash i3 2>/dev/null; then
+  grep -v "bindsym \$mod+Return" $HOME/.config/i3/config > tmpfile && mv tmpfile $HOME/.config/i3/config
   echo "bindsym \$mod+Return exec st" >> $HOME/.config/i3/config
 fi
 echo "export TERMINAL=st" >> $HOME/.profile
