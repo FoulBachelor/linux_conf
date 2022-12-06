@@ -7,30 +7,30 @@ case $yn in
     sudo pacman -Syyuu
     sleep 3
     echo "Installing Prerequisites"
-    sudo pacman -Ryy neovim
-    sudo pacman -Syy --overwrite \* python-cairo
-    sudo pacman -Syy cmake
-    sudo pacman -Syy freetype2
-    sudo pacman -Syy fontconfig
-    sudo pacman -Syy pkg-config
-    sudo pacman -Syy make
-    sudo pacman -Syy python
-    sudo pacman -Syy libxcb
-    sudo pacman -Syy libxkbcommon
-    sudo pacman -Syy dotnet-runtime
-    sudo pacman -Syy luarocks
-    sudo pacman -Syy ruby
-    sudo pacman -Syy opam
-    sudo pacman -Syy r
-    sudo pacman -Syy zip
-    sudo pacman -Syy git
-    sudo pacman -Syy curl
-    sudo pacman -Syy wget
-    sudo pacman -Syy tar
-    sudo pacman -Syy tmux
-    sudo pacman -Syy zsh
-    sudo pacman -Syy ripgrep
-    sudo pacman -Syy sshfs
+    sudo pacman -R neovim
+    sudo pacman -S --overwrite \* python-cairo
+    sudo pacman -S cmake
+    sudo pacman -S freetype2
+    sudo pacman -S fontconfig
+    sudo pacman -S pkg-config
+    sudo pacman -S make
+    sudo pacman -S python
+    sudo pacman -S libxcb
+    sudo pacman -S libxkbcommon
+    sudo pacman -S dotnet-runtime
+    sudo pacman -S luarocks
+    sudo pacman -S ruby
+    sudo pacman -S opam
+    sudo pacman -S r
+    sudo pacman -S zip
+    sudo pacman -S git
+    sudo pacman -S curl
+    sudo pacman -S wget
+    sudo pacman -S tar
+    sudo pacman -S tmux
+    sudo pacman -S zsh
+    sudo pacman -S ripgrep
+    sudo pacman -S sshfs
     sleep 3
     echo "Checking updates post-install"
     sudo pacman -Syyuu
@@ -69,8 +69,7 @@ sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim
 echo "Installing JetBrainsMono Nerd Font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
 mv JetBrainsMono.zip $STUBBE_INSTALLER_DIR/font_tmp
-unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip
-cp -rf $STUBBE_INSTALLER_DIR/font_tmp/* $HOME/.fonts
+unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip -d $HOME/.fonts
 rm -rf $STUBBE_INSTALLER_DIR/font_tmp
 fc-cache -f
 echo "Install ST Terminal"
