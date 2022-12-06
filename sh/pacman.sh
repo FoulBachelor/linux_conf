@@ -17,6 +17,11 @@ case $yn in
     sudo pacman -Syy python
     sudo pacman -Syy libxcb
     sudo pacman -Syy libxkbcommon
+    sudo pacman -Syy dotnet-runtime
+    sudo pacman -Syy luarocks
+    sudo pacman -Syy ruby
+    sudo pacman -Syy opam
+    sudo pacman -Syy r
     sudo pacman -Syy zip
     sudo pacman -Syy git
     sudo pacman -Syy curl
