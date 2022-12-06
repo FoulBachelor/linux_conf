@@ -49,6 +49,8 @@ mkdir -p $HOME/.stubbe/config
 mkdir -p $HOME/.fonts
 mkdir -p $STUBBE_INSTALLER_DIR/font_tmp
 touch -a $HOME/.profile
+echo "Installing RUSTUP and CARGO"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo "Downloading NeoVim, a newer version of Vim, a newer version of Vi, an older version of 5"
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 tar xzvf ./nvim-*.tar.gz
@@ -92,5 +94,11 @@ echo "Creating Symlinks"
 ln -s $HOME/.stubbe/config/.zshrc $HOME/.zshrc
 ln -s $HOME/.stubbe/config/.aliasrc $HOME/.aliasrc
 ln -s $HOME/.stubbe/config/.tmux.conf $HOME/.tmux.conf
+echo "Creating stubbe config binary"
+cp -f $STUBBE_INSTALLER_DIR/stubbe.sh $HOME/.stubbe/stubbe
+sudo chmod +x $HOME/.stubbe/stubbe
+sudo ln -s $HOME/.stubbe/stubbe /usr/bin/stubbe
+echo "Stubbe binary added to PATH, write 'stubbe' in terminal to use it"
+sleep 3
 echo "Installing NvChad config to NeoVim"
 git clone https://github.com/NvChad/NvChad $HOME/.config/nvim --depth 1 && nvim
