@@ -8,13 +8,13 @@ echo "4. edit .zshrc"
 echo "5. edit .tmux.conf"
 echo "6. edit st config.h"
 echo "7. update from master"
-read -p "Please enter the option you want. :)     " resp
+read -p "Please enter the option you want by number:" resp
 case $resp in
   1)
     read -p "alias name:" alias_name
     read -p "alias execution:" alias_exec
     grep -v "$alias_name" $HOME/.stubbe/config/.aliasrc > tmpfile && mv tmpfile $HOME/.stubbe/config/.aliasrc
-    echo "$alias_name=$alias_exec" >> $HOME/.stubbe/config/.aliasrc
+    echo "alias $alias_name=\"$alias_exec\"" >> $HOME/.stubbe/config/.aliasrc
     ;;
   2)
     exec $EDITOR $HOME/.stubbe/config/.aliasrc
@@ -24,6 +24,7 @@ case $resp in
     if test -f "$zsh_name"; then
         echo "if test -f '$zsh_name'; then source $zsh_name fi"
         echo "Import added to .zshrc";
+        source $HOME/.stubbe/config/.aliasrc
       else
         echo "File didn't exist, therefore not added"
     fi
