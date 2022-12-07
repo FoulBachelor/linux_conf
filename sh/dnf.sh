@@ -59,8 +59,7 @@ sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim
 echo "Installing JetBrainsMono Nerd Font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
 mv JetBrainsMono.zip $STUBBE_INSTALLER_DIR/font_tmp
-unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip
-cp -rf $STUBBE_INSTALLER_DIR/font_tmp/* $HOME/.fonts
+unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip -d $HOME/.fonts
 rm -rf $STUBBE_INSTALLER_DIR/font_tmp
 fc-cache -f
 echo "Install ST Terminal"

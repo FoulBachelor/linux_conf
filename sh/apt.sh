@@ -18,7 +18,12 @@ case $yn in
     sudo apt install -y libxcb-xfixes0-dev
     sudo apt install -y libxkbcommon-dev
     sudo apt install -y python3
-    sudo apt install -y git-all
+    sudo apt install -y dotnet-runtime
+    sudo apt install -y luarocks
+    sudo apt install -y ruby
+    sudo apt install -y opam
+    sudo apt install -y r
+    sudo apt install -y git
     sudo apt install -y curl
     sudo apt install -y wget
     sudo apt install -y zip
@@ -65,8 +70,7 @@ sudo ln -s $HOME/.stubbe/builds/nvim/bin/nvim /usr/bin/nvim
 echo "Installing JetBrainsMono Nerd Font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
 mv JetBrainsMono.zip $STUBBE_INSTALLER_DIR/font_tmp
-unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip
-cp -rf $STUBBE_INSTALLER_DIR/font_tmp/* $HOME/.fonts
+unzip $STUBBE_INSTALLER_DIR/font_tmp/JetBrainsMono.zip -d $HOME/.fonts
 rm -rf $STUBBE_INSTALLER_DIR/font_tmp
 fc-cache -f
 echo "Install ST Terminal"
