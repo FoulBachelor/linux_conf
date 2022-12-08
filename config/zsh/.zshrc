@@ -81,6 +81,12 @@ if [[ ! -d "$ZSH_STUBBE_DIRECTORY/zsh-autopair"  ]]; then
   git clone https://github.com/hlissner/zsh-autopair $ZSH_STUBBE_DIRECTORY/zsh-autopair
 fi
 source $ZSH_STUBBE_DIRECTORY/zsh-autopair/autopair.zsh
+source $ZSH_STUBBE_DIRECTORY/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ ! -d "$ZSH_STUBBE_DIRECTORY/zsh-common-aliases"  ]]; then
+  mkdir -p "$ZSH_STUBBE_DIRECTORY/zsh-common-aliases"
+  wget -O https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh -d $ZSH_STUBBE_DIRECTORY/zsh-common-aliases/common-aliases.plugin.zsh
+fi
+source $ZSH_STUBBE_DIRECTORY/zsh-common-aliases/common-aliases.plugin.zsh
 # ZSH Plugins
 
 # USER Keybinds for Terminal
