@@ -83,7 +83,7 @@ fi
 source $ZSH_STUBBE_DIRECTORY/zsh-autopair/autopair.zsh
 if [[ ! -d "$ZSH_STUBBE_DIRECTORY/zsh-common-aliases"  ]]; then
   mkdir -p "$ZSH_STUBBE_DIRECTORY/zsh-common-aliases"
-  wget -O https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh -d $ZSH_STUBBE_DIRECTORY/zsh-common-aliases/common-aliases.plugin.zsh
+  wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh -P $ZSH_STUBBE_DIRECTORY/zsh-common-aliases
 fi
 source $ZSH_STUBBE_DIRECTORY/zsh-common-aliases/common-aliases.plugin.zsh
 # ZSH Plugins
