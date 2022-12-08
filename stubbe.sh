@@ -47,16 +47,16 @@ case $resp in
     echo "5. All of the above!"
     read -p "Enter which file you would like to update:" upd_opt
     if [[ "$upd_opt" = "1" || "$upd_opt" = "5" ]]; then
-      sudo wget -O https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/aliases/.aliasrc -P $HOME/.stubbe/config/.aliasrc
+      wget https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/aliases/.aliasrc -PO $HOME/.stubbe/config
     fi
     if [[ "$upd_opt" = "2" || "$upd_opt" = "5" ]]; then
-      sudo wget -O https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/zsh/.zshrc -P $HOME/.stubbe/config/.zshrc
+      sudo wget https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/zsh/.zshrc -PO $HOME/.stubbe/config
     fi
     if [[ "$upd_opt" = "3" || "$upd_opt" = "5" ]]; then
-      sudo wget -O https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/tmux/.tmux.conf -P $HOME/.stubbe/config/.tmux.conf
+      sudo wget https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/tmux/.tmux.conf -PO $HOME/.stubbe/config
     fi
     if [[ "$upd_opt" = "4" || "$upd_opt" = "5" ]]; then
-      sudo wget -O https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/st/config.h -P $HOME/.stubbe/config/.config.h
+      sudo wget https://raw.githubusercontent.com/FoulBachelor/linux_conf/main/config/st/config.h -PO $HOME/.stubbe/config
     fi
     ;;
 esac
